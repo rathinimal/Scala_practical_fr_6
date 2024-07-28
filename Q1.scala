@@ -29,14 +29,8 @@ object inventory_warehouse {
             m.values.map{case (_,quantity,price) => quantity* price}.sum
         }
 
-        // def mergeInventory(x:Map[Int,Detail_of_products],y:Map[Int,Detail_of_products]):Map[Int,Detail_of_products] = {
-        //     val mergeInventory1 = x++y
-        //     x match{
-        //         case x  if (x.keys == y.keys) => mergeInventory1.updated()
-        //     }
-            
-        // }
-         def mergeInventory(inv1: Map[Int,Detail_of_products], inv2: Map[Int,Detail_of_products]): Map[Int, Detail_of_products] = {
+        //Q3 merging inventory1 and inventory2
+        def mergeInventory(inv1: Map[Int,Detail_of_products], inv2: Map[Int,Detail_of_products]): Map[Int, Detail_of_products] = {
             inv2.foldLeft(inv1) { case (mergedInventory, (id, (name, quantity, price))) =>
                 mergedInventory.get(id) match {
                     case Some((_, existingQuantity, existingPrice)) =>
